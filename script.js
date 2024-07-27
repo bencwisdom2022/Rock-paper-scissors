@@ -10,38 +10,38 @@ let rock = 1;
 let paper = 2;
 let scissors = 3;
 
+let user = 0;
+let computer = 1;
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice() {
   if (rock === randomChoice && rock === computerSelect) {
-    console.log('rock, computer guessed right, play again');
+    console.log('rock');
   } else if (paper === randomChoice && paper === computerSelect) {
-    console.log('Paper, computer guessed right, play again');
+    console.log('Paper');
   } else if (scissors === randomChoice && scissors === computerSelect) {
-    console.log('Scissors, computer guessed rightly, play again');
-  } else {
-    console.log('You lose');
+    console.log('Scissors');
   }
 }
 
 let input1 = parseInt(prompt('Your turn to play'));
-console.log(input1);
 
 function getHumanChoice(input1) {
   if (rock === input1 && rock === randomChoice) {
-    console.log('rock, User guessed right, play again');
+    console.log('rock');
   } else if (paper === input1 && paper === randomChoice) {
-    console.log('Paper, user guessed right, play again');
+    console.log('Paper');
   } else if (scissors === input1 && scissors === randomChoice) {
-    console.log('Scissors, user guessed rightly, play again');
-  } else {
-    console.log('You lose');
+    console.log('Scissors');
   }
 }
 
-// getComputerChoice();
-getHumanChoice(input1);
-getComputerChoice(computerSelect);
-console.log(computerSelect);
-console.log(randomChoice);
+function playRound(humanChoice, computerChoice) {}
 
-// console.log randomChoice);
 // getComputerChoice();
+getComputerChoice(computerSelect);
+getHumanChoice(input1);
+console.log(computerSelect);
+console.log(input1);
+console.log(randomChoice);
