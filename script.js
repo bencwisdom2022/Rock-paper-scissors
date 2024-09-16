@@ -4,72 +4,81 @@
 // Write a function getComputerChoice that will randomly return one of the following string values: "rock", "paper", or "scissors"
 // user reloads and get a random word (rock,paper,scissors)
 
-let randomChoice = Math.floor(Math.random() * 3 + 1);
-let computerSelect = Math.floor(Math.random() * 3 + 1);
-let user = 0;
-let computer = 1;
+// another code
+
 let humanScore = 0;
 let computerScore = 0;
 
-function getComputerChoice() {
-  if (1 === computerSelect) {
-    return 'rock';
-  } else if (2 === computerSelect) {
-    return 'Paper';
-  } else if (3 === computerSelect) {
-    return 'Scissors';
+function playRound(humanChoice, computerChoice, magicChoice) {
+  if (humanChoice === magicChoice && humanChoice !== computerChoice) {
+    console.log(`${humanChoice} beats ${computerChoice}: User wins`);
+    humanScore++;
+  } else if (computerChoice === magicChoice && computerChoice !== humanChoice) {
+    console.log(`${computerChoice} beats ${humanChoice}: Computer wins`);
+    computerScore++;
+  } else if ((computerChoice === humanChoice) === magicChoice) {
+    console.log(`It's a draw game both got the same answer`);
+  } else if ((humanChoice !== magicChoice) !== computerChoice) {
+    console.log(`Both of you failed`);
   }
 }
 
-let input1 = prompt('Your turn to play').toLowerCase();
+function playGame() {
+  for (let i = 1; i <= 5; i++) {
+    console.log(`Round ${i}`);
+    console.log('\n');
 
-function humanChoiceLogic(input1) {
-  if (input1 === 'rock') {
-    return 1;
-  } else if (input1 === 'paper') {
-    return 2;
-  } else if (input1 === 'scissors') {
-    return 3;
-  }
-}
+    let randomChoi = Math.floor(Math.random() * 3 + 1);
+    let computerSelect = Math.floor(Math.random() * 3 + 1);
 
-let humanLogic = humanChoiceLogic(input1);
+    function getRandomChoice() {
+      if (randomChoi === 1) {
+        return 'rock';
+      } else if (randomChoi === 2) {
+        return 'paper';
+      } else if (randomChoi === 3) {
+        return 'scissors';
+      }
+    }
 
-function getHumanChoice(input1) {
-  if ('rock' === input1) {
-    return 'rock';
-  } else if ('paper' === input1) {
-    return 'paper';
-  } else if ('scissors' === input1) {
-    return 'scissors';
-  }
-}
+    function getComputerChoice() {
+      if (1 === computerSelect) {
+        return 'rock';
+      } else if (2 === computerSelect) {
+        return 'paper';
+      } else if (3 === computerSelect) {
+        return 'scissors';
+      }
+    }
 
-function playRound(humanChoice, computerChoice) {
-  if (computerChoice === randomChoice && humanChoice === randomChoice) {
+    function getHumanChoice() {
+      let input1 = prompt('Your turn to play').toLowerCase();
+
+      return input1;
+    }
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    const magicSelection = getRandomChoice();
     console.log(
-      `Computer guessed ${computerChoice} and user guessed ${humanChoice}, no winner`
+      `User chose ${humanSelection}\nComputer chose ${computerSelection}\nCorrect answer is ${magicSelection}`
     );
-  } else if (computerChoice === randomChoice) {
-    console.log(
-      `Computer got ${computerChoice} and user got ${humanChoice}, computer won`
-    );
-  } else if (humanChoice === randomChoice) {
-    console.log(
-      `user got ${humanChoice} and computer got ${computerChoice}: user won`
-    );
-  } else if (humanChoice !== randomChoice && computerChoice !== randomChoice) {
-    console.log('You both are itiboribo');
+
+    playRound(humanSelection, computerSelection, magicSelection);
+    // console.log(humanSelection, computerSelection, magicSelection);
+
+    function verifyWinner(humanScore, computerScore) {
+      if (humanScore > computerScore) {
+        console.log(`${humanScore}:${computerScore}, User is leading`);
+      } else if (computerScore > humanScore) {
+        console.log(`${computerScore}:${humanScore}, Computer is leading`);
+      } else if (computerScore === humanScore) {
+        console.log(`${computerScore}:${humanScore}, It's a tie`);
+      }
+    }
+    verifyWinner(humanScore, computerScore);
+    console.log('\n');
   }
 }
 
-let humanSelection = getHumanChoice(input1);
-let computerSelection = getComputerChoice();
-playRound(humanLogic, computerSelect);
-// getComputerChoice();
-// getComputerChoice(computerSelect);
-getHumanChoice(input1);
-// console.log(computerSelect);
-// console.log(input1);
-console.log(randomChoice);
-console.log(computerSelect);
+playGame();
