@@ -53,8 +53,15 @@ function playGame() {
 
     function getHumanChoice() {
       let input1 = prompt('Your turn to play').toLowerCase();
-
-      return input1;
+      if (input1 === 'paper') {
+        return 'paper';
+      } else if (input1 === 'rock') {
+        return 'rock';
+      } else if (input1 === 'scissors') {
+        return 'scissors';
+      } else {
+        return 'Wrong input';
+      }
     }
 
     const humanSelection = getHumanChoice();
